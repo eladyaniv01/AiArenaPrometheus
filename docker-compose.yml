@@ -52,8 +52,9 @@ services:
   arenaclient:
     image: aiarena/arenaclient:latest
     volumes:
-      - D:\proj\aiarena-client\arenaclient\configs\config_dev.py:/root/aiarena-client/config.py
+      - ./config_dev.py:/root/aiarena-client/config.py
       - app_data:/root/
+    restart: unless-stopped
     command:
       - "while true do python -m arenaclient -f; done;"
     ports:
